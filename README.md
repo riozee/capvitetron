@@ -24,6 +24,25 @@ npm run dev
 npm run build:clean
 ```
 
+## 🌱 Creating a New Project from the Template
+
+This repository includes a PowerShell script to help you scaffold a new project from this template. The `new-project.ps1` script will copy the template files, update the project name, app ID, and author in the configuration files.
+
+### Usage
+
+To create a new project, run the following command in your terminal:
+
+```powershell
+.\scripts\new-project.ps1 -ProjectName "MyNewApp" -AppId "com.example.mynewapp"
+```
+
+**Parameters:**
+
+- `-ProjectName` (Required): The name of your new project.
+- `-AppId` (Required): The application ID for your project (e.g., `com.company.appname`).
+- `-Author` (Optional): The author's name. Defaults to "riozee".
+- `-Destination` (Optional): The directory where the new project will be created. Defaults to the current directory.
+
 ## 📋 Prerequisites
 
 ### Basic Development

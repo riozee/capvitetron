@@ -7,16 +7,24 @@ param(
     [string]$AppId,
     
     [string]$Author = "riozee",
-    [string]$Destination = "."
+
+    [Parameter(Mandatory=$true)]
+    [string]$Destination
 )
 
-Write-Host "🚀 Creating new CapViteTron project: $ProjectName" -ForegroundColor Cyan
+Write-Host "🚀 Creating new CapViteTron project: $ProjectName at $Destination" -ForegroundColor Cyan
 
 $templatePath = Split-Path $PSScriptRoot -Parent
-$projectPath = Join-Path $Destination $ProjectName
+$projectPath = (Resolve-Path $Destination).Path
 
 # Copy template
-Copy-Item -Path $templatePath -Destination $projectPath -Recurse -Force
+New-Item -Path $projectPath -ItemType Directory -Force | Out-Null
+$itemsToCopy = Get-ChildItem -Path $templatePath -Exclude "node_modules", ".git"
+foreach ($item in $itemsToCopy) {
+    if ($item.Name -ne (Split-Path $projectPath -Leaf)) {
+        Copy-Item -Path $item.FullName -Destination $projectPath -Recurse -Force
+    }
+}
 Write-Host "✅ Copied template to $projectPath"
 
 # Update package.json
@@ -41,7 +49,7 @@ Write-Host ""
 Write-Host "🎉 Project '$ProjectName' created successfully!" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
-Write-Host "1. cd $ProjectName"
+Write-Host "1. cd $Destination"
 Write-Host "2. npm install"
 Write-Host "3. npm run dev"
 Write-Host ""
