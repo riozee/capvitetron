@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Cross-platform app template using Capacitor + Vite + Electron",
   "author": "riozee",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

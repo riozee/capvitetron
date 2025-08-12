@@ -11,7 +11,11 @@ CapViteTron is a clean, generalized template that allows you to:
 - Use modern development tools: TypeScript, Vite, ESLint
 - Deploy easily with automated build scripts
 
-## 🚀 Quick Start
+## � Used by
+
+- YomiHelper — https://github.com/riozee/yomihelper
+
+## �🚀 Quick Start
 
 ```bash
 # Install dependencies
@@ -194,7 +198,7 @@ This is a template project. To customize for your needs:
 
 ## 📄 License
 
-This template is provided as-is for educational and development purposes.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
