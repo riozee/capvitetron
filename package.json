@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Cross-platform app template using Capacitor + Vite + Electron",
-  "author": "Your Name",
+  "author": "riozee",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

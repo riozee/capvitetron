@@ -6,7 +6,7 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$AppId,
     
-    [string]$Author = "Your Name",
+    [string]$Author = "riozee",
     [string]$Destination = "."
 )
 

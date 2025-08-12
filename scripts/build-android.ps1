@@ -1,3 +1,7 @@
+# Get project name from package.json
+$packageJson = Get-Content "package.json" | ConvertFrom-Json
+$projectName = $packageJson.name
+
 # Android build script with automatic Java detection
 Write-Host "🚀 Building Android app..." -ForegroundColor Green
 
@@ -85,7 +89,7 @@ if ($gradleExitCode -eq 0) {
             Write-Host "   - $($apk.Name)" -ForegroundColor Gray
             
             # Copy APK to project root with a descriptive name
-            $destinationName = "lang-practice-android.apk"
+            $destinationName = "$projectName-android.apk"
             Copy-Item $apk.FullName $destinationName -Force
             Write-Host "📋 Copied to project root: $destinationName" -ForegroundColor Green
         }

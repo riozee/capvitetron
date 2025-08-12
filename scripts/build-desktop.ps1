@@ -1,3 +1,7 @@
+# Get project name from package.json
+$packageJson = Get-Content "package.json" | ConvertFrom-Json
+$projectName = $packageJson.name
+
 # Desktop build script with automatic file copying
 Write-Host "🚀 Building Desktop app..." -ForegroundColor Green
 
@@ -18,17 +22,17 @@ if ($LASTEXITCODE -eq 0) {
             
             # Copy executable files to project root with descriptive names
             if ($file.Extension -eq ".exe") {
-                $destinationName = "lang-practice-desktop.exe"
+                $destinationName = "$projectName-desktop.exe"
                 Copy-Item $file.FullName $destinationName -Force
                 Write-Host "📋 Copied to project root: $destinationName" -ForegroundColor Green
             }
             elseif ($file.Extension -eq ".AppImage") {
-                $destinationName = "lang-practice-desktop.AppImage"
+                $destinationName = "$projectName-desktop.AppImage"
                 Copy-Item $file.FullName $destinationName -Force
                 Write-Host "📋 Copied to project root: $destinationName" -ForegroundColor Green
             }
             elseif ($file.Extension -eq ".dmg") {
-                $destinationName = "lang-practice-desktop.dmg"
+                $destinationName = "$projectName-desktop.dmg"
                 Copy-Item $file.FullName $destinationName -Force
                 Write-Host "📋 Copied to project root: $destinationName" -ForegroundColor Green
             }
